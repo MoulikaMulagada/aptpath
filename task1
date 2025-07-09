@@ -1,0 +1,46 @@
+#url
+from django.urls import path
+from . import views
+
+from django.contrib import admin
+from django.urls import path, include
+urlpatterns = [
+ path('', views.index, name='home.index'),
+ path('', views.index, name='home.index'),
+ path('admin/', admin.site.urls),
+ path('', include('home.urls')),
+ path('about', views.about, name='home.about'),
+ ]
+
+#view
+
+from django.shortcuts import render
+def index(request):
+ return render(request, 'home/index.html')
+ def about(request):
+ return render(request, 'home/about.html')
+
+# about 
+
+ <!DOCTYPE html>
+ <html>
+ <head>
+ <title>About page</title>
+ </head>
+ <body>
+ <h1>Welcome to the About Page</h1>
+ </body>
+ </html>
+
+#index
+
+<!DOCTYPE html>
+ <html>
+ <head>
+<title>Home page</title>
+ </head>
+ <body>
+ <h1>Welcome to the Home Page</h1>
+ </body>
+ </html>
+
