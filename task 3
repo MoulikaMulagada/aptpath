@@ -1,0 +1,47 @@
+#creating a movie model
+
+ from django.db import models
+ class Movie(models.Model):
+ id = models.AutoField(primary_key=True)
+ name = models.CharField(max_length=255)
+ price = models.IntegerField()
+ description = models.TextField()
+ image = models.ImageField(upload_to='movie_images/')
+def __str__(self):
+ return str(self.id) + ' - ' + self.name
+
+#updating index function
+
+ from django.shortcuts import render
+ from .models import Movie
+ def index(request):
+ template_data = {}
+ template_data['title'] = 'Movies'
+ template_data['movies'] = Movie.objects.all()
+ return render(request, 'movies/index.html',
+ {'template_data': template_data})
+
+#updating the movies.index template
+
+ <div class="col mx-auto mb-3">
+ <h2>List of Movies</h2>
+ <hr />
+ <p class="card-text">
+ <form method="GET"> <div class="row">
+ <div class="col-auto">
+ <div class="input-group col-auto">
+ <div class="input-group-text">
+ Search</div>
+ <input type="text" class="form-control"
+ name="search">
+ </div>
+ </div>
+ <div class="col-auto"> <button class="btn bg-dark 
+text-white"
+ type="submit">Search</button>
+ </div>
+ </div>
+ </form>
+ </p>
+ </div>
+ </div>
